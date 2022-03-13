@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <link rel="shortcut icon" type="x-icon" href="geeksahil.png"
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Geek Sahil</title>
+    </head>
+<body>
+    <style>
+
+        body {
+
+            font-family: sans-serif;
+
+        }
+        .outer {
+            position: fixed;
+            width: 100%;
+            height: 98%;
+        }
+
+        .leftsection, 
+        .rightsection {
+
+            float: left;
+            width: 49%;
+            border: 1px solid black;
+            height: 100%;
+           
+        
+        }
+
+        .uppersection{
+
+            height: 50%;
+            width: 100%;
+            border: 1px solid black;
+            overflow: auto;
+
+        }
+        .lowersection {
+            height: 50%;
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .lowerleftsection,
+        .lowerrightsection {
+            float: left;
+            width: 49.5%;
+            height: 99%;
+            border: 1px solid black ;
+            overflow: auto;
+
+        }
+        #preview{
+            width:100%;
+            height: 100%;
+            
+        }
+
+        .header {
+            background: black;
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+            font-size: 30px;
+            height: 33px;
+            width: 100%;
+
+        }
+
+        .editor {
+            width: 100%;
+            height: calc(100%-30px);
+            overflow: auto;
+    
+        }
+
+    </style>
+
+    <script>
+
+        function showPreview(){
+            var content = "";
+            content += "<style>" + document.getElementById("csseditor").innerText + "<\/style>";
+            content += "<script>" + document.getElementById("jseditor").innerText + "<\/script>";
+            content += "<body>" + document.getElementById("htmleditor").innerText + "<\/body>";
+
+
+            document.getElementById("preview").src = "data:text/html; charset=UTF-8, <html>" + content + "</html>";
+        }
+
+    </script>
+
+    <div class="outer">
+
+        <div class ="leftsection">
+            <div class = "uppersection">
+
+                <div class="header"> HTML Editor</div>
+                <div clas="editor" id="htmleditor" contenteditable="true" onkeyup="showPreview()"></div>
+            </div>
+
+
+            <div class = "lowersection">
+
+                <div class="lowerleftsection">
+                    <div class="header">CSS Editor</div>
+                    <div clas="editor" id="csseditor" contenteditable="true" onkeyup="showPreview()"></div>
+
+                </div>
+
+
+                <div class="lowerrightsection">
+                    <div class="header">JS Editor</div>
+                    <div clas="editor" id="jseditor" contenteditable="true" onkeyup="showPreview()"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="rightsection">
+            <iframe id="preview" />
+               
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
